@@ -1,8 +1,10 @@
-Documentation is now to be found at
+To install FLUX, open either the Linux or Mac installation instructions and follow them closely. Windows is not supported. 
+These instructions will install the python wrapper FLUXpype, located in [this repository](https://github.com/GillySpace27/fluxpype). 
+FLUXpype enables easier installation as well as orchistration of many of the FLUX core functions. 
+
+Documentation of the FLUX core relaxer is now to be found at
 https://github.com/d-lamb/fluxon-mhd/wiki ; it may be collated into
 here for a future release.  The original design docs are kept in "old"
 for historical reasons.
 
 -CED 31-Oct-2007
-
-Please see the other files in this directory for some basic documentation.
