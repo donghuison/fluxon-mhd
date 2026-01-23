@@ -31,7 +31,8 @@ Contributors (gratefully acknowledged):
 
 --------
 INSTALLATION INSTRUCTIONS
-Instructions for installation on Linux or on Macos can be found in the [main FLUX repo here](https://github.com/lowderchris/fluxon-mhd/tree/main/doc). This will help with the harmonious installation of C, Perl, and Python. Please attempt this semi-automated installation process exactly as written.
+
+Instructions for installing FLUX on Linux or macOS machines can be found in the [documentation](https://github.com/lowderchris/fluxon-mhd/tree/main/doc) folder.
 
 --------
 
