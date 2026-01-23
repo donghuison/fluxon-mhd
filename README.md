@@ -1,95 +1,48 @@
-This is FLUX, the Field Line Universal Relaxer
+This is FLUX, the Field Line Universal Relaxer.
 
-For full documentation visit the FLUX wiki:
-     https://github.com/lowderchris/fluxon-mhd/wiki
+FLUX is a prototype MHD solver that is currently able to find nonlinear force-free fields with an exactly specified topology in a quasi-static, infinitely conductive, low-beta medium. Unlike conventional extrapolation codes, FLUX accepts as input a collection of field line shapes that do not necessarily have physical meaning but that do have the correct topology that you want to study. The FLUX engine relaxes the position of those field lines until they approximate the physical force-free state with the same topology that you specified.
 
-FLUX is a prototype MHD solver that is currently able to find nonlinear force-free fields with an exactly specified topology in a quasi-static, infinitely conductive, low-beta medium.  Unlike conventional extrapolation codes, FLUX accepts as input a collection of field line shapes that do not necessarily have physical meaning but that do have the correct topology that you want to study.
+FLUX consists of two parts: a relaxation engine, written in C, and a control interface in Perl. The control interface is intended to be used with Perl Data Language (PDL). If you do not have PDL on your system, you can get it for free from http://pdl.perl.org. PDL compiles "out of the box" on most UNIX systems.
 
-The FLUX engine relaxes the position of those field lines until they approximate the physical force-free state with the same topology that you specified.
+For more details see [Lowder, Gilly, and DeForest 2024](https://ui.adsabs.harvard.edu/abs/2024ApJ...965...13L/abstract) or the FLUX [wiki](https://github.com/lowderchris/fluxon-mhd/wiki).
 
-FLUX consists of two parts: a relaxation engine, written in C, and a control interface in Perl.  The control interface is intended to be used with Perl Data Language (PDL).  If you do not have PDL on your system, you can get it for free from http://pdl.perl.org.  PDL compiles "out of the box" on most UNIX systems, and a "native" version exists for Microsoft Windows.
 
-The authors gratefully acknowledge support from NASA's Living With A Star and Solar/Heliospheric Physics programs, and from the Southwest Research Institute.
-
-All source files are copyright (C) 2004-2023 by the authors unless otherwise marked.  You may modify and/or make copies of this software under the terms of the Gnu Public License, version 2 (GPL v2).  You should have received a copy of the GPL v2 with this software; it is present in the file "COPYING".  If you do not have a copy you may obtain one online from "http://www.gnu.org/licenses/gpl-2.0.html" or by writing to the Free Software Foundation, 59 Temple Place, Suite 330, Boston, MA 0211-1307 USA.
-
-THIS SOFTWARE COMES WITH NO WARRANTY OF ANY KIND.
-
-Authors:
-	Craig DeForest (SwRI)
-	Charles Kankelborg (MSU)
-	Derek Lamb (SwRI)
-	Chris Lowder (SwRI)
-	Chris Gilly (SwRI)
-	Laurel Rachmeler (then at CU Boulder & SwRI)
-	Alisdair Davey (then at SwRI)
-
-Contributors (gratefully acknowledged):
-	Nathan Schwadron
-	Teddy Walls
-	Christopher Plumberg
-
---------
-INSTALLATION INSTRUCTIONS
+## Installation
 
 Instructions for installing FLUX on Linux or macOS machines can be found in the [documentation](https://github.com/lowderchris/fluxon-mhd/tree/main/doc) folder.
 
---------
 
-This is the FLUX top-level directory.
+## Code structure
 
-Subdirectories include:
-        lib -- the central libflux.a core simulation library
-		    (this gets installed into $FL_PREFIX/lib/)
+- doc -- install guide and some documentation (see the [wiki](https://github.com/lowderchris/fluxon-mhd/wiki) for more up-to-date information.)
 
-	doc -- some docs (deprecated; see https://github.com/d-lamb/fluxon-mhd/wiki
-		for more up-to-date information.)
+- include -- 'c' header files (these get installed into $FL_PREFIX/include/flux/)
 
-	include -- 'c' header files
-	           (these get installed into $FL_PREFIX/include/flux/)
+- lib -- the central libflux.a core simulation library (this gets installed into $FL_PREFIX/lib/)
 
-        pdl -- PDL glue code and perl modules
+- pdl -- PDL glue code and perl modules
 
-	pdl/PDL -- PDL autoload subroutines
+  - pdl/PDL -- PDL autoload subroutines
 
-  py -- Python visualization and analysis tools
-  
---------
-  
-RELEASE NOTES FOR v2.3 (26-May-2023):
-  - Updated for compatibility with newer versions of PDL
-  - Organization of solar wind processing codes
-  - Development of automated processing module
-  - Other consolidated changes and closing of branches
+- py -- Python visualization and analysis tools
 
-RELEASE NOTES FOR v2.2 (22-Nov-2008):
-  - Mass is actively tracked in the data structures
-  - Binary save files are supported; all files are auto-gzipped if they have a '.gz' extension
-  - First-stage parallelization appears functional -- the code can spawn to make use of multiple CPU cores on the local machine.
-  - Interpolation of all scientific values onto arbitrary locations is now possible.
-  - New reconnection criteria make reconnection "in the wrong direction" much less common.
-  - Multiple bug fixes in the perl interface code
-  - Data structure labels can now be edited via the perl hash interface.
-  - There is better support for motion and interaction of flux concentrations.
+- t -- Test suite
 
-RELEASE NOTES FOR v2.1 (3-Apr-2008):
-  - Many, many bug fixes
-  - Photospheres and other refs handled correctly by hash interface
-  - Reworked Perl hash interface to eliminate stale pointers altogether
-  - Added Hilbert ditherer
-  - Better reconnection support
-  - Better auto-open support
 
-RELEASE NOTES FOR v2.0 (1-Nov-2007):
-  - Now includes reconnection via the "reconnect" Flux::World method
-  - Updated and validated force laws
-  - Full plasmoid support
-  - Full open-field boundary support, including omega and U loop interactions with the boundary
-  - Includes a Floyd-Steinberg ditherer for footpoint placement
-  - Includes techniques ("ductions") for moving footpoints in time-dependent simulations
-  - Better control over relaxation parameters
-  - Emergence/cancellation support
-  - Better interaction with Perl:
-	- Support for all fields via the Perl hash interface
-	- No memory leaks
-	- No stale pointers
+## Acknowledgements
+
+Authors:
+- Craig DeForest (SwRI)
+- Charles Kankelborg (MSU)
+- Derek Lamb (SwRI)
+- Chris Lowder (SwRI)
+- Chris Gilly (SwRI)
+- Laurel Rachmeler (then at CU Boulder & SwRI)
+- Alisdair Davey (then at SwRI)
+
+Contributors (gratefully acknowledged):
+- Nathan Schwadron
+- Teddy Walls
+- Christopher Plumberg
+
+The authors gratefully acknowledge support from NASA's Living With A Star and Solar/Heliospheric Physics programs, the AFOSR, and from the Southwest Research Institute.
